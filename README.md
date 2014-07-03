@@ -68,7 +68,7 @@ Used by apt::source. Defaults to http://dl-ssl.google.com/linux/linux_signing_ke
 
 ####`chromerepo_name`
 
-Defaults to adobe-linux-${::architecture}
+Defaults to google-chrome
 
 ####`chromerepo_location`
 
