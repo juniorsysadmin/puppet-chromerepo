@@ -19,11 +19,19 @@ Status](https://secure.travis-ci.org/juniorsysadmin/puppet-chromerepo.png)](http
 include  '::chromerepo'
 ```
 
-or to use a local mirror:
+To use a local mirror for Fedora:
 
 ```puppet
 class { '::chromerepo':
   chromerepo_baseurl => 'http://localmirror.server.domain',
+}
+```
+
+To use a local mirror for Ubuntu:
+
+```puppet
+class { '::chromerepo':
+  chromerepo_location => 'http://localmirror.server.domain/',
 }
 ```
 
@@ -35,6 +43,9 @@ The following parameters are available in the chromerepo module:
 
 Defaults to http://dl.google.com/linux/chrome/rpm/stable/{::architecture}.
 
+####`chromerepo_descr`
+Defaults to 'Google Chrome YUM repository'
+
 ####`chromerepo_enabled`
 
 Defaults to 1.
@@ -42,14 +53,6 @@ Defaults to 1.
 ####`chromerepo_gpgcheck`
 
 Defaults to 1
-
-####`chromerepo_name`
-
-Defaults to adobe-linux-${::architecture}
-
-####`chromerepo_proxy`
-
-Defaults to absent.  (Uses the yum.conf value if it exists)
 
 ####`chromerepo_include_src`
 
@@ -63,16 +66,24 @@ Used by apt::source. Defaults to the official Google Chrome repository one.
 
 Used by apt::source. Defaults to http://dl-ssl.google.com/linux/linux_signing_key.pub
 
+####`chromerepo_name`
+
+Defaults to adobe-linux-${::architecture}
+
 ####`chromerepo_location`
 
 Location of Google Chrome repository. Defaults to
 http://dl.google.com/linux/chrome/deb/
 
+####`chromerepo_proxy`
+
+Defaults to absent.  (Uses the yum.conf value if it exists)
+
 ####`chromerepo_release`
 
 Used by apt::source. Defaults to stable.
 
-####`ubuntuzilla_repos`
+####`chromerepo_repos`
 
 Used by apt::source. Defaults to main.
 
