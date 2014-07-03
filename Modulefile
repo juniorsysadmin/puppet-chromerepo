@@ -1,0 +1,12 @@
+name		'juniorsysadmin-chromerepo'
+version		'0.0.1' 
+source		'git://github.com/juniorsysadmin/puppet-chromerepo.git'
+author		'Ben Spiccia'
+summary		'Module for installing the official Google Chrome APT/YUM repository'
+description 	'This module installs the official Google Chrome APT/YUM repository'
+license     	'Apache License, Version 2.0'
+project_page 'https://github.com/juniorsysadmin/puppet-chromerepo'
+
+dependency  'treydock/gpg_key', '>= 0.0.3'
+dependency  'puppetlabs/apt', '>= 1.0.0'
+project_page 'https://github.com/juniorsysadmin/puppet-chromerepo'

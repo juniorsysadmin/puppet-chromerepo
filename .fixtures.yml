@@ -1,0 +1,7 @@
+fixtures:
+  repositories:
+    apt: "git://github.com/puppetlabs/puppetlabs-apt.git"
+    gpg_key: "git://github.com/treydock/puppet-gpg_key"
+    stdlib: "git://github.com/puppetlabs/puppetlabs-stdlib.git"
+  symlinks:
+    chromerepo: "#{source_dir}"
