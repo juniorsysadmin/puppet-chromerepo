@@ -7,31 +7,58 @@
 # === Parameters
 #
 # [*chromerepo_baseurl*]
-# Defaults to http://dl.google.com/linux/chrome/rpm/stable/{::architecture}
+#   Used by yumrepo.
+#   Defaults to http://dl.google.com/linux/chrome/rpm/stable/{::architecture}
 #
 # [*chromerepo_descr*]
-# Defaults to 'Google Chrome YUM repository'
+#   Used by yumrepo. Defaults to 'Google Chrome YUM repository'
 #
 # [*chromerepo_enabled*]
-# Defaults to 1
+#   Used by yumrepo. Defaults to 1
 #
 # [*chromerepo_gpgcheck*]
-# Defaults to 1
+#   Used by yumrepo. Defaults to 1
+#
+# [*chromerepo_include_src*]
+#   Used by apt::source. Defaults to false.
+#
+# [*chromerepo_key*]
+#   Used by apt::source. Defaults to the official Google Chrome repository one.
+#
+# [*chromerepo_key_source*]
+#   Used by apt::source. Defaults to
+#   http://dl-ssl.google.com/linux/linux_signing_key.pub
+#
+# [*chromerepo_location*]
+#   Used by apt::source. Defaults to
+#   http://dl.google.com/linux/chrome/deb/
 #
 # [*chromerepo_name*]
-# Defaults to google-chrome
+#   Used by yumrepo. Defaults to 'google-chrome'
 #
 # [*chromerepo_proxy*]
-# Defaults to absent. (Uses the yum.conf value if it exists)
+#   Used by yumrepo. Defaults to absent. (Uses the yum.conf value if it exists)
+#
+# [*chromerepo_release*]
+#   Used by apt::source. Defaults to stable.
+#
+# [*chromerepo_repos*]
+#   Used by apt::source. Defaults to main.
 #
 # === Usage
 #
 # include '::chromerepo'
 #
-# or to use a local mirror:
+# Or to use a local mirror for Fedora:
 #
 #  class { 'chromerepo':
 #    chromerepo_baseurl => 'http://localmirror.server.domain',
+#  }
+#
+# Or to use a local mirror for Ubuntu:
+#
+#  class { '::chromerepo':
+#    chromerepo_location => 'http://localmirror.server.domain/',
 #  }
 #
 class chromerepo (
@@ -62,9 +89,9 @@ class chromerepo (
 
       file { '/etc/pki/rpm-gpg/RPM-GPG-KEY-google-chrome':
         ensure => present,
-        owner  => 'root',
         group  => 'root',
         mode   => '0644',
+        owner  => 'root',
         source => 'puppet:///modules/chromerepo/RPM-GPG-KEY-google-chrome',
       }
 
@@ -76,12 +103,12 @@ class chromerepo (
     'Debian': {
       include apt
       apt::source { 'google-chrome':
-        location    => $chromerepo_location,
-        release     => $chromerepo_release,
-        repos       => $chromerepo_repos,
         include_src => $chromerepo_include_src,
         key         => $chromerepo_key,
         key_source  => $chromerepo_key_source,
+        location    => $chromerepo_location,
+        release     => $chromerepo_release,
+        repos       => $chromerepo_repos,
       }
     }
     default: {
