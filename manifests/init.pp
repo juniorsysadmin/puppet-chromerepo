@@ -79,12 +79,12 @@ class chromerepo (
   case $::osfamily {
     'RedHat': {
       yumrepo { $chromerepo_name:
-        baseurl        => $chromerepo_baseurl,
-        descr          => $chromerepo_descr,
-        enabled        => $chromerepo_enabled,
-        gpgcheck       => $chromerepo_gpgcheck,
-        gpgkey         => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-google-chrome',
-        proxy          => $chromerepo_proxy,
+        baseurl  => $chromerepo_baseurl,
+        descr    => $chromerepo_descr,
+        enabled  => $chromerepo_enabled,
+        gpgcheck => $chromerepo_gpgcheck,
+        gpgkey   => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-google-chrome',
+        proxy    => $chromerepo_proxy,
       }
 
       file { '/etc/pki/rpm-gpg/RPM-GPG-KEY-google-chrome':
