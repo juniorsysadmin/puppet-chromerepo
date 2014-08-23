@@ -1,19 +1,21 @@
-####Table of Contents
+# chromerepo
+
+[![Build Status](https://secure.travis-ci.org/juniorsysadmin/puppet-chromerepo.png)](http://travis-ci.org/juniorsysadmin/puppet-chromerepo)
+
+#### Table of Contents
 
 1. [Overview](#overview)
 2. [Usage](#usage)
 3. [Limitations](#limitations)
 4. [Development](#development)
 
-##Overview
+## Overview
+
 This module installs and enables the Google Chrome YUM or APT repository
 depending on the osfamily. When run on a non-RedHat or non-Debian osfamily
 it exits with no action performed.
 
-[![Build
-Status](https://secure.travis-ci.org/juniorsysadmin/puppet-chromerepo.png)](http://travis-ci.org/juniorsysadmin/puppet-chromerepo)
-
-##Usage
+## Usage
 
 ```puppet
 include  '::chromerepo'
@@ -35,61 +37,62 @@ class { '::chromerepo':
 }
 ```
 
-###Parameters
+### Parameters
 
 The following parameters are available in the chromerepo module:
 
-####`chromerepo_baseurl`
+#### `chromerepo_baseurl`
 
 Used by yumrepo. Defaults to
 http://dl.google.com/linux/chrome/rpm/stable/{::architecture}.
 
-####`chromerepo_descr`
+#### `chromerepo_descr`
+
 Used by yumrepo. Defaults to 'Google Chrome YUM repository'
 
-####`chromerepo_enabled`
+#### `chromerepo_enabled`
 
 Used by yumrepo. Defaults to 1.
 
-####`chromerepo_gpgcheck`
+#### `chromerepo_gpgcheck`
 
 Used by yumrepo. Defaults to 1
 
-####`chromerepo_include_src`
+#### `chromerepo_include_src`
 
 Used by apt::source. Defaults to false.
 
-####`chromerepo_key`
+#### `chromerepo_key`
 
 Used by apt::source. Defaults to the official Google Chrome repository one.
 
-####`chromerepo_key_source`
+#### `chromerepo_key_source`
 
 Used by apt::source. Defaults to
 http://dl-ssl.google.com/linux/linux_signing_key.pub
 
-####`chromerepo_location`
+#### `chromerepo_location`
 
 Location of Google Chrome repository. Defaults to
 http://dl.google.com/linux/chrome/deb/
 
-####`chromerepo_name`
+#### `chromerepo_name`
 
 Used by yumrepo. Defaults to 'google-chrome'
 
-####`chromerepo_proxy`
+#### `chromerepo_proxy`
 
 Defaults to absent.  (Uses the yum.conf value if it exists)
 
-####`chromerepo_release`
+#### `chromerepo_release`
 
 Used by apt::source. Defaults to stable.
 
-####`chromerepo_repos`
+#### `chromerepo_repos`
 
 Used by apt::source. Defaults to main.
 
-##Limitations
+## Limitations
 
 This module has received limited testing on:
 
@@ -98,6 +101,6 @@ This module has received limited testing on:
 
 against Puppet 3.x
 
-##Development
+## Development
 
 Patches are welcome.
