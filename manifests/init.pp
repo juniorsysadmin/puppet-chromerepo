@@ -96,8 +96,8 @@ class chromerepo (
       }
 
       gpg_key{ $chromerepo_name:
-        path    => '/etc/pki/rpm-gpg/RPM-GPG-KEY-google-chrome',
-        before  => Yumrepo[$chromerepo_name]
+        path   => '/etc/pki/rpm-gpg/RPM-GPG-KEY-google-chrome',
+        before => Yumrepo[$chromerepo_name]
       }
     }
     'Debian': {
