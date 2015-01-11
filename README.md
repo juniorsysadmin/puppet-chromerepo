@@ -5,9 +5,9 @@
 #### Table of Contents
 
 1. [Overview](#overview)
-2. [Usage](#usage)
-3. [Limitations](#limitations)
-4. [Development](#development)
+1. [Usage](#usage)
+1. [Limitations](#limitations)
+1. [Development](#development)
 
 ## Overview
 
