@@ -1,4 +1,3 @@
-# Optional parameters in setting up the Google Chrome repository
 class chromerepo::params {
   $chromerepo_baseurl       = "http://dl.google.com/linux/chrome/rpm/stable/${::architecture}"
   $chromerepo_descr         = 'Google Chrome YUM repository'

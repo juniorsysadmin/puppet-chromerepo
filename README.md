@@ -96,7 +96,7 @@ Used by apt::source. Defaults to main.
 
 This module has received limited testing on:
 
-* Fedora 20
+* Fedora 21
 * Ubuntu 14.04
 
 against Puppet 3.x
