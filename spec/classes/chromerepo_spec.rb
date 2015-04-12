@@ -68,7 +68,7 @@ describe 'chromerepo', :type => :class do
     it { should contain_apt__source('google-chrome').with_release('stable') }
     it { should contain_apt__source('google-chrome').with_repos('main') }
     it { should contain_apt__source('google-chrome').with_include_src(false) }
-    it { should contain_apt__source('google-chrome').with_key('7FAC5991') }
+    it { should contain_apt__source('google-chrome').with_key('4CCA1EAF950CEE4AB83976DCA040830F7FAC5991') }
     it { should contain_apt__source('google-chrome').with_key_source('http://dl-ssl.google.com/linux/linux_signing_key.pub') }
   end
 
