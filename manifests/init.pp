@@ -1,51 +1,59 @@
 class chromerepo (
-  $chromerepo_baseurl           = $chromerepo::params::chromerepo_baseurl,
-  $chromerepo_descr             = $chromerepo::params::chromerepo_descr,
-  $chromerepo_enabled           = $chromerepo::params::chromerepo_enabled,
-  $chromerepo_gpgcheck          = $chromerepo::params::chromerepo_gpgcheck,
-  $chromerepo_include_src       = $chromerepo::params::chromerepo_include_src,
-  $chromerepo_key               = $chromerepo::params::chromerepo_key,
-  $chromerepo_key_source        = $chromerepo::params::chromerepo_key_source,
-  $chromerepo_location          = $chromerepo::params::chromerepo_location,
-  $chromerepo_name              = $chromerepo::params::chromerepo_name,
-  $chromerepo_proxy             = $chromerepo::params::chromerepo_proxy,
-  $chromerepo_release           = $chromerepo::params::chromerepo_release,
-  $chromerepo_repos             = $chromerepo::params::chromerepo_repos,
+  $baseurl     = $chromerepo::params::baseurl,
+  $descr       = $chromerepo::params::descr,
+  $enabled     = $chromerepo::params::enabled,
+  $gpgcheck    = $chromerepo::params::gpgcheck,
+  $include_src = $chromerepo::params::include_src,
+  $key         = $chromerepo::params::key,
+  $key_source  = $chromerepo::params::key_source,
+  $location    = $chromerepo::params::location,
+  $repo_name   = $chromerepo::params::repo_name,
+  $proxy       = $chromerepo::params::proxy,
+  $release     = $chromerepo::params::release,
+  $repos       = $chromerepo::params::repos,
 ) inherits chromerepo::params {
 
   case $::osfamily {
     'RedHat': {
-      yumrepo { $chromerepo_name:
-        baseurl  => $chromerepo_baseurl,
-        descr    => $chromerepo_descr,
-        enabled  => $chromerepo_enabled,
-        gpgcheck => $chromerepo_gpgcheck,
-        gpgkey   => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-google-chrome',
-        proxy    => $chromerepo_proxy,
+      yumrepo { $repo_name:
+        ensure        => present,
+        baseurl       => $baseurl,
+        descr         => $descr,
+        enabled       => $enabled,
+        gpgcheck      => $gpgcheck,
+        gpgkey        => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-google-chrome',
+        proxy         => $proxy,
+        repo_gpgcheck => 1,
       }
 
       file { '/etc/pki/rpm-gpg/RPM-GPG-KEY-google-chrome':
-        ensure => present,
+        ensure => file,
         group  => 'root',
         mode   => '0644',
         owner  => 'root',
         source => 'puppet:///modules/chromerepo/RPM-GPG-KEY-google-chrome',
-      }
-
-      gpg_key{ $chromerepo_name:
-        path   => '/etc/pki/rpm-gpg/RPM-GPG-KEY-google-chrome',
-        before => Yumrepo[$chromerepo_name]
+        before => Yumrepo[$repo_name],
       }
     }
     'Debian': {
-      include apt
+      ensure_packages(['apt-transport-https', 'ca-certificates'])
+
+      include ::apt
       apt::source { 'google-chrome':
-        include_src => $chromerepo_include_src,
-        key         => $chromerepo_key,
-        key_source  => $chromerepo_key_source,
-        location    => $chromerepo_location,
-        release     => $chromerepo_release,
-        repos       => $chromerepo_repos,
+        include  => {
+          'src' => $include_src,
+        },
+        key      => {
+          'id'     => $key,
+          'source' => $key_source,
+        },
+        location => $location,
+        release  => $release,
+        repos    => $repos,
+        require  => [
+          Package['apt-transport-https'],
+          Package['ca-certificates'],
+        ],
       }
     }
     default: {
