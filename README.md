@@ -8,7 +8,7 @@
 1. [Usage](#usage)
 1. [Parameters](#parameters)
 1. [Limitations](#limitations)
-    * [Module dependencies](#modules-dependencies)
+    * [Module dependencies](#module-dependencies)
 1. [Development](#development)
 
 ## Overview
@@ -27,7 +27,7 @@ Or to use a local mirror for Fedora:
 
 ```puppet
 class { '::chromerepo':
-  chromerepo_baseurl => 'http://localmirror.server.domain',
+  baseurl => 'http://localmirror.server.domain',
 }
 ```
 
@@ -35,7 +35,7 @@ Or to use a local mirror for Ubuntu:
 
 ```puppet
 class { '::chromerepo':
-  chromerepo_location => 'http://localmirror.server.domain/',
+  location => 'http://localmirror.server.domain/',
 }
 ```
 
