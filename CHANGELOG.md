@@ -1,3 +1,5 @@
+## 2015-07-12 Release 0.1.0
+
 ### Backwards-incompatible changes:
 - chromerepo_ prefixes for parameters have been removed
 - puppetlabs-stdlib 4.1.0 or greater is now required
