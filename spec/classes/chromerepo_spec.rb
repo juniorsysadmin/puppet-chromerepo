@@ -10,7 +10,7 @@ describe 'chromerepo', :type => :class do
     it { should contain_yumrepo('google-chrome').with_enabled('1') }
     it { should contain_yumrepo('google-chrome').with_ensure('present') }
     it { should contain_yumrepo('google-chrome').with_gpgcheck('1') }
-    it { should contain_yumrepo('google-chrome').with_gpgkey('file:///etc/pki/rpm-gpg/RPM-GPG-KEY-google-chrome') }
+    it { should contain_yumrepo('google-chrome').with_gpgkey('http://dl-ssl.google.com/linux/linux_signing_key.pub') }
     it { should contain_yumrepo('google-chrome').with_proxy('absent') }
     it { should contain_yumrepo('google-chrome').with_repo_gpgcheck('1') }
   end
@@ -22,7 +22,7 @@ describe 'chromerepo', :type => :class do
     it { should contain_yumrepo('google-chrome').with_enabled('1') }
     it { should contain_yumrepo('google-chrome').with_ensure('present') }
     it { should contain_yumrepo('google-chrome').with_gpgcheck('1') }
-    it { should contain_yumrepo('google-chrome').with_gpgkey('file:///etc/pki/rpm-gpg/RPM-GPG-KEY-google-chrome') }
+    it { should contain_yumrepo('google-chrome').with_gpgkey('http://dl-ssl.google.com/linux/linux_signing_key.pub') }
     it { should contain_yumrepo('google-chrome').with_proxy('absent') }
     it { should contain_yumrepo('google-chrome').with_repo_gpgcheck('1') }
   end
@@ -39,16 +39,22 @@ describe 'chromerepo', :type => :class do
     it { should contain_yumrepo('google-chrome').with_descr('This is a description') }
   end
 
-  context 'Fedora with repo enabled set' do
+  context 'Fedora with repo enabled unset' do
     let(:facts) {{ :osfamily => 'RedHat', :operatingsystem => 'Fedora', :architecture => 'x86_64', }}
-    let(:params) {{ :enabled => '1' }}
-    it { should contain_yumrepo('google-chrome').with_enabled('1') }
+    let(:params) {{ :enabled => '0' }}
+    it { should contain_yumrepo('google-chrome').with_enabled('0') }
   end
 
-  context 'Fedora with repo gpgcheck set' do
+  context 'Fedora with gpgcheck unset' do
     let(:facts) {{ :osfamily => 'RedHat', :operatingsystem => 'Fedora', :architecture => 'x86_64', }}
-    let(:params) {{ :gpgcheck => '1' }}
-    it { should contain_yumrepo('google-chrome').with_gpgcheck('1') }
+    let(:params) {{ :gpgcheck => '0' }}
+    it { should contain_yumrepo('google-chrome').with_gpgcheck('0') }
+  end
+
+  context 'Fedora with repo_gpgcheck unset' do
+    let(:facts) {{ :osfamily => 'RedHat', :operatingsystem => 'Fedora', :architecture => 'x86_64', }}
+    let(:params) {{ :repo_gpgcheck => '0' }}
+    it { should contain_yumrepo('google-chrome').with_repo_gpgcheck('0') }
   end
 
   context 'Fedora with repo name set' do

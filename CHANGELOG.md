@@ -1,3 +1,19 @@
+### Backwards-incompatible changes:
+- chromerepo_ prefixes for parameters have been removed
+- puppetlabs-stdlib 4.1.0 or greater is now required
+- Puppet 3.6 or greater is now required
+- puppetlabs-apt 2.x is now an implicit dependency on Debian-based systems
+
+### Summary
+
+This update removes the need for treydock-gpg_key on RedHat-based systems and
+also increases the minimum versions required for dependencies.
+
+### Features:
+
+- Adds openSUSE support
+- Adds repo_gpgcheck for Yum platforms
+
 ## 2015-04-13 Release 0.0.3
 
 ### Backwards-incompatible changes:

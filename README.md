@@ -6,7 +6,9 @@
 
 1. [Overview](#overview)
 1. [Usage](#usage)
+1. [Parameters](#parameters)
 1. [Limitations](#limitations)
+    * [Module dependencies](#modules-dependencies)
 1. [Development](#development)
 
 ## Overview
@@ -41,54 +43,58 @@ class { '::chromerepo':
 
 The following parameters are available in the chromerepo module:
 
-#### `chromerepo_baseurl`
+#### `baseurl`
 
 Used by yumrepo. Defaults to
 http://dl.google.com/linux/chrome/rpm/stable/{::architecture}.
 
-#### `chromerepo_descr`
+#### `descr`
 
 Used by yumrepo. Defaults to 'Google Chrome YUM repository'
 
-#### `chromerepo_enabled`
+#### `enabled`
 
 Used by yumrepo. Defaults to 1.
 
-#### `chromerepo_gpgcheck`
+#### `gpgcheck`
 
 Used by yumrepo. Defaults to 1
 
-#### `chromerepo_include_src`
+#### `include_src`
 
 Used by apt::source. Defaults to false.
 
-#### `chromerepo_key`
+#### `key`
 
 Used by apt::source. Defaults to the official Google Chrome repository one.
 
-#### `chromerepo_key_source`
+#### `key_source`
 
-Used by apt::source. Defaults to
+Used by apt::source and yurepo. Defaults to
 http://dl-ssl.google.com/linux/linux_signing_key.pub
 
-#### `chromerepo_location`
+#### `location`
 
-Location of Google Chrome repository. Defaults to
+Location of Google Chrome repository for Debian. Defaults to
 http://dl.google.com/linux/chrome/deb/
 
-#### `chromerepo_name`
+#### `repo_name`
 
 Used by yumrepo. Defaults to 'google-chrome'
 
-#### `chromerepo_proxy`
+#### `proxy`
 
 Defaults to absent.  (Uses the yum.conf value if it exists)
 
-#### `chromerepo_release`
+#### `release`
 
 Used by apt::source. Defaults to stable.
 
-#### `chromerepo_repos`
+#### `repo_gpgcheck`
+
+Used by yumrepo. Defaults to 1
+
+#### `repos`
 
 Used by apt::source. Defaults to main.
 
@@ -96,10 +102,16 @@ Used by apt::source. Defaults to main.
 
 This module has received limited testing on:
 
-* Fedora 21
+* Fedora 22
 * Ubuntu 14.04
 
-against Puppet 3.x
+against Puppet 3.x and Puppet 4.x
+
+### Module dependencies
+
+This modules uses `puppetlabs-apt` for the management of the Google
+repository. If using an operating system of the Debian-based family, you will
+need to ensure that `puppetlabs-apt` version 2.x is installed.
 
 ## Development
 
