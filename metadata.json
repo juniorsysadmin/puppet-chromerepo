@@ -1,10 +1,10 @@
 {
   "name": "juniorsysadmin-chromerepo",
   "version": "0.1.0",
-  "author": "Ben Spiccia",
+  "author": "juniorsysadmin",
   "summary": "Module for installing the official Google Chrome APT/YUM repository",
   "license": "Apache-2.0",
-  "source": "git://github.com/juniorsysadmin/puppet-chromerepo.git",
+  "source": "https://github.com/juniorsysadmin/puppet-chromerepo.git",
   "project_page": "https://github.com/juniorsysadmin/puppet-chromerepo",
   "issues_url": "https://github.com/juniorsysadmin/puppet-chromerepo/issues",
   "tags": ["chrome", "google"],
@@ -25,17 +25,13 @@
   "dependencies": [
     {
       "name":"puppetlabs/stdlib",
-      "version_requirement":">= 4.1.0 < 5.0.0"
+      "version_requirement":">= 4.6.0 < 5.0.0"
     }
   ],
   "requirements": [
     {
-      "name": "pe",
-      "version_requirement": "3.x"
-    },
-    {
       "name": "puppet",
-      "version_requirement": ">=3.6.0 < 5.0.0"
+      "version_requirement": ">=3.8.7 < 5.0.0"
     }
   ]
 }

@@ -1,3 +1,15 @@
+## Future
+
+## Backwards-incompatible changes:
+
+- Puppet 3.8.7 or greater is now required
+- puppetlabs-stdlib 4.6.0 or greater is now required
+
+### Summary
+
+This release bumps up dependency versions and adds to the TravisCI testing
+matrix.
+
 ## 2015-07-12 Release 0.1.0
 
 ### Backwards-incompatible changes:
