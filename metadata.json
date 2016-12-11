@@ -1,6 +1,6 @@
 {
   "name": "juniorsysadmin-chromerepo",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "juniorsysadmin",
   "summary": "Module for installing the official Google Chrome APT/YUM repository",
   "license": "Apache-2.0",
